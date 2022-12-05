@@ -1,0 +1,22 @@
+<li class="flex border rounded-xl h-60">
+    
+    <img [src]="book.src" [alt]="book.name" width="100" class="m-auto rounded-sm"/>
+    <div class="m-auto">
+        <p><strong>{{book.name | titlecase }}</strong></p><br>
+        <p><strong>by {{book.author | titlecase}}</strong></p>
+        <p class="my-4">{{book.amount| currency:'INR'}}</p>
+        <form  [formGroup]="qty">
+             
+                <label for="quantity">Book Quantity &nbsp; </label>
+                <input type="quantity" class="form-control p-1 rounded border" placeholder="Quantity" formControlName="quantity" required><br>
+                <span style="color: red;" *ngIf=" quantity && quantity.invalid ">Enter quantity *Value Should be Greater than 0</span><br>
+                <!-- <span style="color: red;" *ngIf="qty.controls.quantity.hasError('required')"> Quantity required for adding book to cart</span><br> -->
+                <button (click)="addtocart()" [disabled]="!qty.valid"class="border rounded bg-purple-600 text-white p-1" ><strong>ADD TO CART</strong></button>
+
+        </form>
+    <!-- </form> -->
+        
+        <!-- <button *ngIf="!isInCart" (click)="addtocart()" class="border rounded bg-purple-600 text-white p-1" ><strong>ADD TO CART</strong></button>
+        <button *ngIf="isInCart" (click)="removefromcart()" class="border rounded bg-purple-600 text-white p-1"><strong>REMOVE FROM CART</strong></button> -->
+    </div>
+</li>

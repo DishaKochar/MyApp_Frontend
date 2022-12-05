@@ -1,0 +1,39 @@
+<!-- <app-main></app-main>
+<br>
+<div class="block">
+<h2 style="text-align:center;">Your Cart</h2><br>
+<div *ngIf="getCart().length > 0">
+    <div *ngFor="let book of getCart()">
+        <p class="my-4 text-2xl">{{book.name}}</p>
+    </div>
+    Books In Your Cart: {{getCart().length}} </div>
+<div *ngIf="getCart().length == 0">No Books In Your Cart!</div>
+</div> -->
+
+
+<app-main></app-main>
+<div style="padding: 10px;">
+
+    <div class="text-lg m-4 align-center"><strong> &nbsp; YOUR ORDER &nbsp; &nbsp; &nbsp; &nbsp;</strong><br><br>
+        <button (click)="order()" class="border rounded bg-purple-600 text-white p-1" *ngIf="cart.length != 0"><strong>CHECKOUT</strong></button>
+        <div *ngIf="cart.length == 0">No Books In Your Cart!</div>
+    </div>
+        
+        <ul>
+            <ng-container *ngFor="let cartItem of cart; let i=index;">
+                <li class="flex border rounded-xl h-60">
+                    <img [src]="cartItem.src" [alt]="cartItem.name" width="100" class="m-auto rounded-sm"/>
+                    <div class="m-auto">
+                        <p><strong>{{cartItem.name | titlecase}}</strong></p><br>
+                        <p><strong>by {{cartItem.author | titlecase}}</strong></p>
+                        <p class="my-4">{{cartItem.amount| currency:'INR'}}</p>
+                        <p>Quantity: {{cartItem.quantity}}</p>
+                        <button (click)="removeFromCart(cartItem.id)" class="border rounded bg-purple-600 text-white p-1" ><strong>REMOVE FROM CART</strong></button>
+                    </div>
+                </li>
+            </ng-container>
+        
+        </ul> 
+</div>
+
+

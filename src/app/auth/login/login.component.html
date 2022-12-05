@@ -1,0 +1,36 @@
+<div class="flex m-auto h-screen justigy-center">
+    <!-- <form (ngSubmit)="submit()" [formGroup]="myGroup" class="p-4 rounded-lg border m-auto">
+        <h1 class="text-center text-xl">LOGIN</h1>
+            Email: &nbsp; <input type="text" formControlName="email">
+            Password: &nbsp; <input type="password" formControlName="password">
+    </form> -->
+
+    <form [formGroup]="myGroup" (ngSubmit)="submit()" class="p-4 rounded-lg border m-auto">
+        <div class="form-group">
+          <label for="email" class="label-control">Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+          <input type="text" placeholder="Enter email" formControlName="email" 
+                 class="form-control p-1 rounded border"><br>
+          <span style="color: red;" *ngIf="email && email.invalid && email.touched">The Email Id is invalid !!</span><br>
+        </div><br>
+        <div class="form-group">
+          <label for="password" class="label-control">Password: &nbsp;</label>
+          <input type="password" placeholder="Enter password" formControlName="password" 
+                 class="form-control p-1 rounded border align-right"><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched">The Password is invalid !!</span><br>
+        </div><br>
+        <div>
+            <input [disabled]="myGroup.invalid" type="submit" class="p-2 w-full bg-purple-700 text-white">
+            <!-- hover:bg-purple-900 -->
+        </div>
+        <div>Are you a new user? &nbsp; <a (click)="onClick()">Create Account</a>
+        </div>
+        <!-- <div class="m-5">
+            <label for="email">Email &nbsp; &nbsp; &nbsp; &nbsp;</label>
+            <input type="email" id="email" class="p-1 rounded border" placeholder="Email Address" [(ngModel)]="form.email" name="email" >
+        </div>
+        <div class="m-5">
+            <label for="password">Password &nbsp;</label>
+            <input type="password" id="password" class="p-1 rounded border"  placeholder="Password" [(ngModel)]="form.password" name="password">
+        </div> -->
+    </form>
+</div>

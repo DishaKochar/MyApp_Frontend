@@ -1,0 +1,10 @@
+
+.hide {
+    display: none;
+  }
+      
+  .myDIV:hover + .hide {
+    display: block;
+    text-align: right;
+    margin-right:40%;
+  }

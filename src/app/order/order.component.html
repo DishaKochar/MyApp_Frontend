@@ -1,0 +1,41 @@
+<app-main></app-main>
+<div class="container">
+
+</div>
+
+
+<div style="padding: 10px;">
+
+<div class="text-lg m-4"><strong> &nbsp; YOUR ORDER</strong>
+    <table>
+        <tr>
+            <th><strong>Item</strong></th>
+            <th><strong>Price</strong></th>
+            <th><strong>Quantity</strong></th>
+            <th><strong>Total</strong></th>
+        </tr>
+        <tr *ngFor="let orderItem of order; let i=index;">
+            <td>{{orderItem.name | titlecase }}</td>
+            <td>{{orderItem.amount| currency:'INR'}}</td>
+            <td>{{orderItem.quantity}}</td>
+            <td>₹{{orderItem.quantity * orderItem.amount}}</td>
+            <!-- <app-order-item [orderItem]="singlebook" class="w-1/2 p-5"></app-order-item>    -->
+        </tr>
+        <tr>
+            <td></td>
+            <td><strong></strong></td>
+            <td><strong>Total Amount</strong></td>
+            <td><strong>{{total | currency:'INR'}}</strong></td>
+        </tr>
+    </table> 
+    <br>
+    <div class="align-center">
+        <label for="total"><strong>Total Amount:&nbsp; &nbsp;</strong> {{total | currency:'INR'}} &nbsp; &nbsp;</label>
+        <button (click)="placeOrder()" class="border rounded bg-purple-600 text-right text-white p-1" ><strong>PLACE ORDER</strong></button>
+    </div>
+</div>
+
+
+
+
+

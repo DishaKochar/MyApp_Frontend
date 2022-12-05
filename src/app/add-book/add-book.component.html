@@ -1,0 +1,29 @@
+<app-main></app-main>
+
+<div class="flex m-auto h-screen justigy-center">
+
+    <form [formGroup]="myGroup" (ngSubmit)="submit()" class="p-4 rounded-lg border m-auto">
+        <div class="form-group">
+          <label for="name" class="label-control">Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+          <input type="text" placeholder="Enter name" formControlName="name" 
+                 class="form-control p-1 rounded border"><br>
+          <span style="color: red;" *ngIf="name && name.invalid && name.touched">Name of book is necessary!!</span><br>
+        </div><br>
+        <div class="form-group">
+          <label for="author" class="label-control">Author: &nbsp; &nbsp; &nbsp; &nbsp; </label>
+          <input type="author" placeholder="Enter author's name" formControlName="author" 
+                 class="form-control p-1 rounded border align-right"><br>
+         <span style="color: red;" *ngIf="author && author.invalid && author.touched">Author's name is necessary!!!!</span><br>
+        </div><br>
+        <div class="form-group">
+          <label for="amount" class="label-control">Amount: &nbsp; &nbsp; &nbsp; &nbsp;</label>
+          <input type="text" placeholder="Enter amount" formControlName="amount" 
+                 class="form-control p-1 rounded border"><br>
+          <span style="color: red;" *ngIf="amount && amount.invalid && amount.touched">Amount is necessary!!</span><br>
+        </div><br>
+      <div>
+            <input [disabled]="myGroup.invalid" type="submit" class="p-2 w-full bg-purple-700 text-white">
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,23 @@
+<app-main></app-main>
+
+
+<div style="padding: 10px;">
+
+<div class="text-lg m-4"><strong> &nbsp; LIST OF BOOKS</strong> 
+    
+    <!-- <button (click)="this.isShowing=!this.isShowing" class="buttonright">
+        <ng-container *ngIf="!this.isShowing" >SHOW BOOKS</ng-container>
+        <ng-container *ngIf="this.isShowing" >HIDE BOOKS</ng-container >
+    </button> -->
+
+</div>
+    
+    <ul *ngIf="isShowing">
+        <ng-container *ngFor="let singlebook of books; let i=index">
+            <app-book [book]="singlebook" class="w-1/2 p-5"></app-book>   
+        </ng-container>
+    
+    </ul>
+<!-- </div> -->
+    <!-- (bookEmitter)="addtocart($event)" -->
+

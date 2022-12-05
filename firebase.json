@@ -1,0 +1,19 @@
+{
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
+  },
+  "hosting": {
+    "public": "dist/my-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

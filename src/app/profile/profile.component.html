@@ -1,0 +1,130 @@
+<!-- 
+<div>
+    <form style="width:fit-content; height: fit-content; text-align:center;" class=" p-4 rounded-lg border m-20 ">
+        <div class="text-center text-xl"><strong>Account Details</strong></div>
+        <div class="m-5  p-1">
+            <label for="name"><strong>Name:</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].name}}">
+            
+        </div>
+        <div class="m-5  p-1">
+            <label for="email"><strong>Email:</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].email}}">
+            <span class="myDIV">&nbsp; &#9745;</span>
+            <span class="hide">verified</span>
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="phone"><strong>Mobile No. : &nbsp;</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].mobilenumber}}">
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="address"><strong>Address: &nbsp; </strong> &nbsp;</label>
+            <textarea class=" rounded border">{{data[0].address}}</textarea>
+        </div>
+
+        <form class="p-4 rounded-lg border m-20">
+            <div class="text-center text-xl"><strong>Change Password:</strong></div>
+            <div class="m-5 p-1">
+                <label><strong>Password: &nbsp;</strong> &nbsp;</label>
+                <input class="p-1 rounded border"  placeholder="password">
+            </div>
+            <div class="m-5 p-1">
+                <label><strong>Confirm Password: &nbsp;</strong> &nbsp;</label>
+                <input class="p-1 rounded border"  placeholder="confirm password">
+            </div>
+        </form>
+        <button><strong class="border rounded bg-purple-600 text-white p-1">Save</strong></button>
+
+    </form>
+
+</div> -->
+
+<app-main></app-main>
+<form #profileDetails="ngForm" [formGroup]="profile" >
+
+    <mat-card align="center" class="p-4 rounded-lg border m-20">
+        <mat-card-title><strong>Account Details</strong></mat-card-title><br>
+        <mat-card-content>
+            <div class="m-5  p-1">
+                <label for="name"><strong>Name:</strong> &nbsp;</label>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Your Name" formControlName="name">
+                </mat-form-field> 
+                <!-- <input class="p-1 rounded border"  placeholder="{{data[0].name}}"> -->
+            </div>
+            <div class="m-5  p-1">
+                <label for="email"><strong>Email:</strong> &nbsp;</label>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Your Email Id" formControlName="email">
+                </mat-form-field>
+                <span class="myDIV">&nbsp; &#9745; <span class="hide">verified</span></span>
+                <span class="hide">verified</span>
+            </div>
+
+            <div class="m-5 p-1">
+                <label for="wallet"><strong>Wallet Points: &nbsp;</strong> &nbsp;</label>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Wallet Points" formControlName="wallet">
+                </mat-form-field>
+            </div>
+
+            <div class="m-5 p-1">
+                <label for="phone"><strong>Mobile No. : &nbsp;</strong> &nbsp;</label>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Mobile Number" formControlName="mobilenumber">
+                </mat-form-field>
+            </div>
+
+            <div class="m-5 p-1">
+                <label for="address"><strong>Address: &nbsp; </strong> &nbsp;</label>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <input matInput placeholder="Address" formControlName="address">
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+        <!-- <mat-card class="p-4 rounded-lg border m-20">
+            <mat-card-title>Change Password</mat-card-title><br>
+            <mat-card-content>
+                    <div class="m-5 p-1">
+                        <label><strong>Password: &nbsp;</strong> &nbsp;</label>
+                        <input class="p-1 rounded border"  placeholder="password">
+                    </div>
+                    <div class="m-5 p-1">
+                        <label><strong>Confirm Password: &nbsp;</strong> &nbsp;</label>
+                        <input class="p-1 rounded border"  placeholder="confirm password">
+                    </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card-actions >
+            <button class="border rounded bg-purple-600 text-white p-1" mat-button>Save</button>
+        </mat-card-actions> -->
+   
+        <div style="padding: 10px;">
+
+            <div *ngIf="order.length != 0" class="text-lg m-4"><strong> &nbsp; YOUR ORDERS &nbsp; &nbsp; &nbsp; &nbsp;</strong>
+            </div>
+            <div *ngIf="order.length == 0"><strong>No Order Placed Till Now!</strong></div>
+                
+                <ul>
+                    <ng-container *ngFor="let orderItem of order; let i=index;">
+                        <li class="flex border rounded-xl h-60">
+                            <img [src]="orderItem.src" [alt]="orderItem.name" width="100" class="m-auto rounded-sm"/>
+                            <div class="m-auto">
+                                <p><strong>{{orderItem.name | titlecase}}</strong></p><br>
+                                <p><strong>by {{orderItem.author | titlecase}}</strong></p>
+                                <p class="my-4">{{orderItem.amount| currency:'INR'}}</p>
+                                <p>Quantity: {{orderItem.quantity}}</p>
+                            </div>
+                        </li>
+                    </ng-container>
+                
+                </ul> 
+        </div>
+
+</mat-card>
+
+</form>

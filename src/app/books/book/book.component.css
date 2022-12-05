@@ -1,0 +1,10 @@
+.book{
+    list-style: none;
+    text-overflow: ellipse;
+    width: 240px;
+    padding: 20px;
+    
+}
+.giveborder{
+    border-radius: 4px;
+}

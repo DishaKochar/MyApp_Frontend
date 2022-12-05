@@ -1,0 +1,111 @@
+<!-- <div class="flex m-auto h-screen justigy-center">
+    <form (ngSubmit)="submit()" #myForm="ngForm" class="p-4 rounded-lg border m-auto width-25%">
+        <h1 class="text-center text-xl">CREATE ACCOUNT</h1>
+
+        <div class="m-5 w-full" >
+            <label for="name">Your name</label><br>
+            <input type="name" id="firstname" class="p-1 rounded border" placeholder="First and last name"[(ngModel)]="register.name" name="name" #name="ngModel" required>
+        </div>
+
+        <div class="m-5 w-full" >
+            <label for="mobilenumber">Mobile number</label><br>
+            <input type="mobilenumber" id="mobilenumber" class="p-1 rounded border" placeholder="Mobile number"[(ngModel)]="register.mobilenumber" name="mobilenumber" #mobilenumber="ngModel" required>
+        </div>
+
+        <div class="m-5 w-full" >
+            <label for="address">Address</label><br>
+            <input type="address" id="address" class="p-1 rounded border" placeholder="Address"[(ngModel)]="register.address" name="address" #address="ngModel" required>
+        </div>        
+        
+        <div class="m-5 w-full" >
+            <label for="email">Email</label><br>
+            <input type="email" id="email" class="p-1 rounded border" placeholder="Email Address"[(ngModel)]="register.email" name="email" #email="ngModel" required>
+        </div>
+        <span *ngIf="email.valid && (email.dirty || email.touched)" class=" m-5 bg-red-300 rounded text-white"> &nbsp; Email field must be valid &nbsp;</span> 
+
+        <div class="m-5 w-full">
+            <label for="password">Password &nbsp;</label><br>
+            <input type="password" id="password" class="p-1 rounded border"  placeholder="Password"[(ngModel)]="register.password" name="password" #password="ngModel" required>
+        </div>
+        <span *ngIf="password.valid && (password.dirty || password.touched)" class=" m-5 bg-red-300 rounded text-white"> &nbsp; Password field must be valid &nbsp;</span>
+
+        <div class="m-5 w-full">
+            <label for="confirm password">Confirm Password &nbsp;</label><br>
+            <input type=" confirm password" id="confirm password " class="p-1 rounded border"  placeholder="confirm Password" [(ngModel)]="register.confirmpassword" name="confirmpassword" #confirmpassword="ngModel" required>
+        </div>
+         <span *ngIf="confirmpassword.valid && (confirmpassword.dirty || confirmpassword.touched)" class=" m-5 bg-red-300 rounded text-white"> &nbsp; Confirm Password field must be valid &nbsp;</span>
+
+        <div><br>
+            <input type="submit" [disabled]="myForm.form.invalid" class=" p-2 w-full bg-purple-700 text-white hover:bg-purple-900">
+        </div>
+        <div>Already have an account? &nbsp;<a (click)="onClick()">Login</a>
+        </div>
+    </form>
+</div> -->
+<div class="flex m-auto h-screen justigy-center">
+    <form #regDetails="ngForm" [formGroup]="register" (ngSubmit)="submit()" class="p-4 rounded-lg border m-auto">
+        <div class="form-group m-5 w-full" >
+            <label for="name">Your name</label><br>
+            <input type="name" class="form-control p-1 rounded border" placeholder="Enter your Full Name" formControlName="name"><br>
+            <span style="color: red;" *ngIf=" name && name.invalid && name.touched">The name is invalid !!</span><br>
+        </div>
+
+        <div class="form-group m-5 w-full" >
+            <label for="mobilenumber">Mobile Number</label><br>
+            <input type="text" class="form-control p-1 rounded border" placeholder="Enter Mobile number" formControlName="mobilenumber"><br>
+            <span style="color: red;" *ngIf=" mobilenumber && mobilenumber.invalid && mobilenumber.touched">The Mobile No. is invalid !!</span><br>
+        </div>
+
+        <div class="form-group m-5">
+          <label for="email" class="label-control">Email:</label><br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <!-- <mat-label>Email</mat-label> -->
+            <input type="email" matInput formControlName="email" 
+                   placeholder="Enter Email Address"> 
+            <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+            <mat-error *ngIf="register.controls.email.hasError('email') && !register.controls.email.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="register.controls.email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field> 
+          <!-- <input type="text" placeholder="Enter email" formControlName="email" 
+                 class="form-control p-1 rounded border"><br>
+          <span style="color: red;" *ngIf="email && email.invalid && email.touched">The Email Id is invalid !!</span><br> -->
+        </div>
+
+        <div class="form-group m-5">
+          <label for="address" class="label-control">Address</label><br>
+          <input type="address" placeholder="Enter address" formControlName="address" 
+                 class="form-control p-1 rounded border align-right"><br>
+         <span style="color: red;" *ngIf="address && address.invalid && address.touched">The address is invalid !!</span><br>
+        </div>
+
+        <div class="form-group m-5">
+          <label for="password" class="label-control">Password:</label><br>
+          <input type="password" placeholder="Enter password" formControlName="password" 
+                 class="form-control p-1 rounded border align-right"><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched">The Password is invalid !! </span><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched">Enter 1 Capital Letter</span><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched">Enter 1 Small Letter</span><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched">Enter 1 special character</span><br>
+         <span style="color: red;" *ngIf="password && password.invalid && password.touched"> Length b/w 7 to 12 characters.</span><br>
+        
+        </div>
+
+        <div class="form-group m-5">
+            <label for="confirmpassword" class="label-control">Confirm Password: </label><br>
+            <input type="password" placeholder="Confirm your password" formControlName="confirmpassword" 
+                   class="form-control p-1 rounded border align-right"><br>
+           <span style="color: red;" *ngIf="confirmpassword && confirmpassword.invalid && confirmpassword.touched">The Confirm Password is invalid !!</span><br>
+          </div><br>
+        <div>
+            <input [disabled]="register.invalid" type="submit" class="p-2 w-full bg-purple-700 text-white">
+        </div>
+        <div>Already have an account? &nbsp;<a (click)="onClick()">Login</a>
+        </div>
+
+    </form>
+
+</div>
