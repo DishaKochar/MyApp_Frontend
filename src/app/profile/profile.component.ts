@@ -52,14 +52,14 @@ export class ProfileComponent implements OnInit {
         address: res.data.address,
         wallet: res.data.wallet
       })
-      console.log("profile data",res)
-    })
+      console.log("profile data",res);
+    });
 
     this.user.getOrderDetails(email).subscribe((res: any)=>{
-      console.log("Order Details:-",res.data)
-      this.order = res.data[0].books
-      console.log(this.order)
-    })
+      console.log("Order Details:-",res.data);
+      this.order = res.data[0].books;
+      console.log(this.order);
+    });
 
   }
 

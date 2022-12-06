@@ -15,7 +15,7 @@
 <div style="padding: 10px;">
 
     <div class="text-lg m-4 align-center"><strong> &nbsp; YOUR ORDER &nbsp; &nbsp; &nbsp; &nbsp;</strong><br><br>
-        <button (click)="order()" class="border rounded bg-purple-600 text-white p-1" *ngIf="cart.length != 0"><strong>CHECKOUT</strong></button>
+        <button (click)="order()" class="border rounded bg-purple-600 text-white p-1 buttonright" *ngIf="cart.length != 0"><strong>CHECKOUT</strong></button>
         <div *ngIf="cart.length == 0">No Books In Your Cart!</div>
     </div>
         

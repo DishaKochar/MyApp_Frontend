@@ -14,8 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CartComponent implements OnInit {
   // cart: any ={}
-  cart: any=[]
-  item: any=[]
+  cart: any=[];
+  item: any=[];
   email = JSON.parse(localStorage.getItem('userEmail') || '{}');
 
   constructor(private router: Router,private toastr: ToastrService,private user:HttpService) { } //private cartService: CartService
@@ -23,25 +23,25 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
 
     this.user.getCart(this.email).subscribe((res:any)=>{
-      console.log(res)
-      this.cart = res[0].books
-      console.log(res[0].books)
+      console.log(res);
+      this.cart = res[0].books;
+      console.log(res[0].books);
       
-    })
+    });
   }
   order(){
-    this.router.navigateByUrl('/order')
+    this.router.navigateByUrl('/order');
   }
 
   async removeFromCart(id:any){
     
 
-    console.log("Cart Component Before Removal:",this.cart)
+    console.log("Cart Component Before Removal:",this.cart);
 
     for(let i=0; i<this.cart.length; i++){
       if(this.cart[i].id == id)
       {
-        this.item = this.cart[i]
+        this.item = this.cart[i];
         break;
       }
     }
@@ -50,18 +50,18 @@ export class CartComponent implements OnInit {
     
 
     this.user.removeFromCart(this.item).subscribe(res=>{
-       if(res.status == 200){
-        location.reload()
-        this.toastr.success("Book Removed From Cart !!")
+       if(res.status === 200){
+        location.reload();
+        this.toastr.success("Book Removed From Cart !!");
 
         
       }
       else{
-        this.toastr.error("Unable to remaove book from cart !" )
+        this.toastr.error("Unable to remaove book from cart !" );
 
       }
       
-    })
+    });
   }
 
 }

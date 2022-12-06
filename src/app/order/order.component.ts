@@ -10,46 +10,43 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  order: any[]=[]
-  cartDetails : any = []
+  order: any[]=[];
+  cartDetails : any = [];
   email = JSON.parse(localStorage.getItem('userEmail') || '{}');
 
   constructor(private router: Router,private toastr: ToastrService,private user:HttpService) { } //private cartService: CartService
-  total: number = 0
+  total: number = 0;
   ngOnInit(): void {
-  // getCart(){
-  //   return this.cartService.get();
-  // }
+ 
     this.user.getCart(this.email).subscribe((res:any)=>{
-      this.order = res[0].books
-      this.cartDetails=res[0]
+      this.order = res[0].books;
+      this.cartDetails=res[0];
 
       this.order.forEach((value) => {
         this.total+= value.quantity * value.amount
       });
       
-      this.cartDetails.totalAmount=this.total
+      this.cartDetails.totalAmount=this.total;
 
-      console.log("Cart Details:\n",this.cartDetails)
+      console.log("Cart Details:\n",this.cartDetails);
     })
   }
   placeOrder(){
     this.user.placeOrder(this.cartDetails).subscribe((res:any)=>{
-      if(res.status==200)
+      if(res.status===200)
       {
-        this.toastr.success("Order Placed Successfully !!")
-        this.router.navigateByUrl('/books')
+        this.toastr.success("Order Placed Successfully !!");
+        this.router.navigateByUrl('/books');
 
       }
       else{
-        const points= res.data
-        this.toastr.error("Order Not Placed \n You need more points in wallet:"+  points)
+        const points= res.data;
+        this.toastr.error("Order Not Placed \n You need more points in wallet:" + points);
       }
-      console.log(res)
+      console.log(res);
     })
-  }
-  //this.toastr.success("You have successfully registered ! \n Login to get started!!")
-
+  };
+  
 }
 
 
