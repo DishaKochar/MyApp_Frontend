@@ -20,17 +20,17 @@ export class AddBookComponent {
   
   get name()
   {
-    return this.myGroup.get('name')
-  }
+    return this.myGroup.get('name');
+  };
 
   get author()
   {
-    return this.myGroup.get('author')
+    return this.myGroup.get('author');
   }
   get amount()
   {
-    return this.myGroup.get('amount')
-  }
+    return this.myGroup.get('amount');
+  };
 
 
   constructor(private router: Router,private toastr: ToastrService, private user:HttpService){ }
@@ -50,15 +50,15 @@ export class AddBookComponent {
     }
     this.user.addBooks(obj).subscribe((res:any)=>{
       console.log("API RESPONSE for adding book details",res);
-      if(res.status=='200'){
-        console.log('1 login res: ',res);
+      if(res.status===200){
+        console.log('Add Book res: ',res);
         this.toastr.success(res.message);
-        this.router.navigateByUrl('books')
+        this.router.navigateByUrl('books');
       }
       else{
-        console.log('2 login res: ',res);
-        this.toastr.error("Unable to add books ",res.message)
-        this.router.navigateByUrl('book/add')    
+        console.log('Add Book res: ',res);
+        this.toastr.error("Unable to add books ",res.message);
+        this.router.navigateByUrl('book/add');  
       }
      })
   }
